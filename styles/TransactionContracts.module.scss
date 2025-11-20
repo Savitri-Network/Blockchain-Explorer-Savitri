@@ -1,0 +1,225 @@
+// Variables for reusability
+$bg-color-light: #fafafa;
+$bg-color-white: #ffffff;
+$border-color-light: #d4d4d4;
+$text-color-dark: #2a2831;
+$text-color-light: #ababab;
+$text-color-placeholder: #cccccc;
+$text-color-primary: #4173c4;
+$padding-container: 40px 32px;
+$padding-item: 10px;
+$radius-medium: 10px;
+$radius-small: 8px;
+$font-size-title: 26px;
+$font-size-default: 16px;
+$gap-large: 32px;
+$gap-medium: 8px;
+
+.blocks_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    font-size: $font-size-title;
+    font-weight: 600;
+    margin: 40px $padding-container 24px;
+  }
+
+  .searchContainer {
+    margin: 0 $padding-container;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    align-items: center;
+    gap: $gap-large;
+
+    .count {
+      color: $text-color-light;
+      font-size: $font-size-default;
+      font-weight: 400;
+    }
+
+    .searchBar {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      background-color: $bg-color-white;
+      padding: $padding-item;
+      border: 1px solid $border-color-light;
+      border-radius: $radius-medium;
+
+      .icon {
+        color: $text-color-placeholder;
+        margin-right: 0.5rem;
+      }
+
+      .input {
+        width: 100%;
+        flex-grow: 1;
+        border: none;
+        background-color: transparent;
+        font-size: $font-size-default;
+        font-weight: 500;
+
+        &:focus {
+          outline: none;
+        }
+
+        &::placeholder {
+          font-weight: 400;
+          color: $text-color-placeholder;
+        }
+      }
+    }
+
+    .dropdown {
+      padding: $padding-item;
+      display: flex;
+      align-items: center;
+      position: relative;
+      border: 1px solid $border-color-light;
+      border-radius: $radius-medium;
+      background-color: $bg-color-white;
+
+      .select {
+        width: 215px;
+        background-color: transparent;
+        border: none;
+        font-size: 1rem;
+        cursor: pointer;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .arrow {
+        position: absolute;
+        right: 0.5rem;
+        pointer-events: none;
+        color: $text-color-placeholder;
+      }
+    }
+  }
+
+  .blocksTable {
+    box-sizing: border-box;
+    margin: 20px 0 0 $padding-container;
+    border-collapse: collapse;
+    text-align: left;
+
+    th,
+    td {
+      padding: $padding-item 16px;
+      border: 1px solid $border-color-light;
+    }
+
+    th {
+      color: $text-color-light;
+      font-weight: 400;
+      font-size: $font-size-default;
+      background-color: $bg-color-white;
+
+      &:first-child {
+        border-top-left-radius: $radius-medium;
+      }
+
+      &:last-child {
+        border-top-right-radius: $radius-medium;
+      }
+    }
+
+    td {
+      color: $text-color-dark;
+      font-weight: 400;
+      font-size: $font-size-default;
+      background-color: $bg-color-white;
+
+      &.id,
+      &.pubkey {
+        color: $text-color-primary;
+        max-width: 250px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      &.signature {
+        max-width: 250px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      &.img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      &.flex {
+        display: flex;
+        align-items: center;
+        gap: $gap-medium;
+      }
+    }
+
+    tr {
+      th:first-child,
+      td:first-child {
+        border-left: none;
+      }
+
+      th:last-child,
+      td:last-child {
+        border-right: none;
+      }
+    }
+
+    tr:first-child th {
+      border-top: none;
+    }
+
+    tr:last-child th,
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .status {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 5px;
+
+      &.active {
+        background-color: green;
+      }
+
+      &.inactive {
+        background-color: red;
+      }
+    }
+  }
+
+  .bottom {
+    margin: 0 0 40px $padding-container;
+    display: flex;
+    padding: $padding-item 20px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $bg-color-white;
+    font-size: $font-size-default;
+    border-bottom-left-radius: $radius-small;
+    border-bottom-right-radius: $radius-small;
+
+    .pagination {
+      display: flex;
+      gap: 90px;
+      font-size: 14px;
+
+      .countBlock {
+        color: $text-color-light;
+        font-size: 14px;
+      }
+    }
+  }
+}

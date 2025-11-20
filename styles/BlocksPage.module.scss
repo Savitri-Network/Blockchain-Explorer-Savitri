@@ -1,0 +1,203 @@
+// Variables for reusability
+$bg-color-light: #f8f8f8;
+$bg-color-white: #ffffff;
+$text-color-dark: #2a2831;
+$text-color-light: #ababab;
+$text-color-placeholder: #cccccc;
+$text-color-primary: #4173c4;
+$border-color-light: #d4d4d4;
+$border-color-table: #eaeaea;
+$padding-container: 32px;
+$padding-block: 20px;
+$padding-item: 10px;
+$radius: 10px;
+$font-size-title: 26px;
+$font-size-default: 16px;
+$font-size-small: 14px;
+$gap-large: 32px;
+$gap-medium: 20px;
+$gap-small: 12px;
+
+.blocks_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: $bg-color-light;
+
+  .title {
+    font-size: $font-size-title;
+    font-weight: 600;
+    margin: 40px $padding-container 24px;
+  }
+
+  .searchContainer {
+    margin: 0 $padding-container;
+    display: flex;
+    gap: $gap-large;
+
+    .searchBar {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      background-color: $bg-color-white;
+      padding: $padding-item;
+      border: 1px solid $border-color-light;
+      border-radius: $radius;
+
+      .icon {
+        color: $text-color-placeholder;
+        margin-right: 0.5rem;
+      }
+
+      .input {
+        width: 100%;
+        flex-grow: 1;
+        border: none;
+        background-color: transparent;
+        font-size: $font-size-default;
+        font-weight: 500;
+
+        &:focus {
+          outline: none;
+        }
+
+        &::placeholder {
+          color: $text-color-placeholder;
+        }
+      }
+    }
+
+    .dropdown {
+      padding: $padding-item;
+      display: flex;
+      align-items: center;
+      position: relative;
+      border: 1px solid $border-color-light;
+      border-radius: $radius;
+      background-color: $bg-color-white;
+
+      .select {
+        width: 215px;
+        background-color: transparent;
+        border: none;
+        font-size: 1rem;
+        cursor: pointer;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .arrow {
+        position: absolute;
+        right: 0.5rem;
+        pointer-events: none;
+        color: $text-color-placeholder;
+      }
+    }
+  }
+  .containerTable {
+    margin: $gap-medium $padding-container 0;
+    .blocksTable {
+      width: 100%;
+      box-sizing: border-box;
+      border-collapse: collapse;
+      text-align: left;
+
+      th,
+      td {
+        padding: 8px 16px;
+        border: 1px solid $border-color-table;
+      }
+
+      th {
+        color: $text-color-light;
+        font-weight: 500;
+        font-size: $font-size-default;
+        background-color: $bg-color-white;
+
+        &:first-child {
+          border-top-left-radius: $radius; // Top left corner
+        }
+
+        &:last-child {
+          border-top-right-radius: $radius; // Top right corner
+        }
+      }
+
+      td {
+        color: $text-color-dark;
+        font-weight: 400;
+        font-size: $font-size-default;
+        background-color: $bg-color-white;
+
+        a {
+          color: $text-color-primary;
+        }
+
+        &.id,
+        &.pubkey {
+          color: $text-color-primary;
+        }
+
+        &.signature,
+        &.pubkey {
+          max-width: 250px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        &.img {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        &.blue {
+          color: $text-color-primary;
+        }
+      }
+
+      tr {
+        th:first-child,
+        td:first-child {
+          border-left: none;
+        }
+
+        th:last-child,
+        td:last-child {
+          border-right: none;
+        }
+      }
+
+      tr:first-child {
+        th {
+          border-top: none;
+        }
+      }
+
+      tr:last-child {
+        th,
+        td {
+          border-bottom: none;
+        }
+      }
+
+      .status {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-right: 5px;
+
+        &.active {
+          background-color: green;
+        }
+
+        &.inactive {
+          background-color: red;
+        }
+      }
+    }
+  }
+}

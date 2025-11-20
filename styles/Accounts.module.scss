@@ -1,0 +1,196 @@
+// Variables for reusability
+$bg-color-header: #f8f8f8;
+$bg-color-body: #f8f8f8;
+$bg-color-white: #ffffff;
+$bg-color-tab-active: #F1E4FF;
+$text-color-primary: #f6c209;
+$text-color-dark: #2a2831;
+$text-color-light: #ababab;
+$text-color-placeholder: #cccccc;
+$text-color-blue: #4173c4;
+$border-color-light: #d4d4d4;
+$padding-container: 40px 32px;
+$padding-item: 20px;
+$radius-small: 5px;
+$radius-medium: 10px;
+$radius-large: 12px;
+$font-size-title: 26px;
+$font-size-default: 16px;
+$font-size-large: 20px;
+$gap-large: 24px;
+$gap-medium: 20px;
+$gap-small: 10px;
+
+.accountsHeader {
+  display: flex;
+  flex-direction: column;
+  gap: $gap-large;
+  padding: $padding-container;
+  background: $bg-color-header;
+
+  h1 {
+    font-size: $font-size-title;
+    font-weight: 600;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: $gap-small;
+
+    .accountItem {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      background: $bg-color-white;
+      border-radius: $radius-large;
+      padding: $padding-item;
+
+      .purple {
+        color: #ce00f0;
+      }
+      .blue {
+        color: #4cc3fc;
+      }
+      .orange {
+        color: #f17300;
+      }
+      h1 {
+        font-size: $font-size-title;
+      }
+
+      h2 {
+        font-size: $font-size-large;
+        font-weight: 600;
+        color: $text-color-primary;
+        margin-bottom: 4px;
+      }
+
+      p {
+        font-weight: 400;
+        font-size: $font-size-large;
+        color: $text-color-dark;
+      }
+    }
+  }
+}
+
+.accountsBody {
+  padding: $padding-container;
+  background-color: $bg-color-body;
+
+  .tabContainer {
+    display: flex;
+    margin-bottom: $gap-medium;
+
+    .tab {
+      font-size: $font-size-default;
+      padding: $gap-small $gap-medium;
+      cursor: pointer;
+      border: none;
+      background-color: transparent;
+      border-radius: $radius-large;
+      color:#9E3FFE;
+      &.activeTab {
+        background-color: $bg-color-tab-active;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .searchContainer {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 50% 50%;
+    padding: $padding-item;
+    background-color: $bg-color-body;
+    border-radius: $radius-small;
+
+    .count {
+      color: $text-color-light;
+      font-size: $font-size-default;
+      font-weight: 400;
+    }
+
+    .searchForm {
+      display: flex;
+      align-items: center;
+      background-color: $bg-color-white;
+      padding: $gap-small;
+      border: 1px solid $border-color-light;
+      border-radius: $radius-medium;
+
+      .icon {
+        color: $text-color-placeholder;
+        margin-right: 0.5rem;
+      }
+
+      .input {
+        width: 100%;
+        flex-grow: 1;
+        border: none;
+        background-color: transparent;
+        font-size: $font-size-default;
+        font-weight: 500;
+
+        &:focus {
+          outline: none;
+        }
+
+        &::placeholder {
+          font-weight: 400;
+          color: $text-color-placeholder;
+        }
+      }
+    }
+  }
+
+  .tableContainer {
+    overflow-x: auto;
+  }
+
+  .accountsTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: $bg-color-white;
+
+    th {
+      color: $text-color-light;
+      font-weight: 500;
+      padding: 8px 16px;
+      text-align: left;
+      border-bottom: 1px solid $border-color-light;
+
+      &:not(:last-child) {
+        border-right: 1px solid $border-color-light;
+      }
+
+      &:first-child {
+        border-top-left-radius: $radius-small;
+      }
+
+      &:last-child {
+        border-top-right-radius: $radius-small;
+      }
+    }
+
+    td {
+      font-size: $font-size-default;
+      font-weight: 400;
+      padding: 8px 16px;
+      text-align: left;
+      border-bottom: 1px solid $border-color-light;
+
+      &:not(:last-child) {
+        border-right: 1px solid $border-color-light;
+      }
+
+      &.blue {
+        color: $text-color-blue;
+      }
+    }
+  }
+
+
+}

@@ -1,0 +1,33 @@
+.loadBody {
+  width: 100%;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .loader {
+    width: 13.4px;
+    height: 13.4px;
+    background:#9E3FFE;
+    color: #9E3FFE;
+    border-radius: 50%;
+    box-shadow: 22.4px 0, -22.4px 0;
+    animation: dots-u8fzftmd 1s infinite linear alternate;
+  }
+}
+
+@keyframes dots-u8fzftmd {
+  0% {
+    box-shadow: 22.4px 0, -22.4px 0;
+  }
+
+  33% {
+    box-shadow: 22.4px 0, -22.4px 0 rgba(253, 233, 161, 0.13);
+    background: rgba(253, 233, 161, 0.13);
+  }
+
+  66% {
+    box-shadow: 22.4px 0 rgba(253, 233, 161, 0.13), -22.4px 0;
+    background: rgba(147, 137, 99, 0.13);
+  }
+}

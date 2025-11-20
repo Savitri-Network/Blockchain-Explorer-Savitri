@@ -1,0 +1,16 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:3000",
+  "executionArgs": {
+    "projectName": "savitri-explorer-main",
+    "projectPath": "C:\\Users\\andre\\OneDrive - Prometeo chain system kz ltd\\Desktop\\Documenti Savitri\\Codice realizzato per Savitri\\savitri-explorer-main\\savitri-explorer-main",
+    "testIds": [],
+    "additionalInstruction": "",
+    "envs": {
+      "API_KEY": "sk-user-7baqQo3VHSczvwoz2nAlSm7GW0YeZ8bdT2RWKoNwxbrinY4rB49EFvBiSpcMY3S7DT9F6dXbLrUcC7kRmXht0Cz4Z_4IORJ8UOsvUXt4HG1Wvz0mFkxSLhkzImI40NPTjVs"
+    }
+  },
+  "proxy": "http://6ca2580c-82c2-4ebe-aa7c-1463bf90dfe2:Op2KLfpbleauvmWvTlRMsDZAXrLbWHK5@tun.testsprite.com:8080"
+}

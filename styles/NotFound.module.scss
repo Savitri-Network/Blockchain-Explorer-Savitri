@@ -1,0 +1,75 @@
+.container {
+  width: 100%;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .copyContainer {
+    text-align: center;
+    position: relative;
+    p {
+      color: #000;
+      font-size: 24px;
+      letter-spacing: 0.2px;
+      margin: 0;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+
+    .handle {
+      background: #ffe500;
+      width: 14px;
+      height: 30px;
+      top: 0;
+      left: 0;
+      margin-top: 1px;
+      position: absolute;
+      animation: blink 1s infinite alternate;
+    }
+  }
+
+  .replayIcon {
+    fill: #666;
+    width: 20px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+  }
+
+  .replayIcon:hover {
+    fill: #888;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animateCopy {
+  animation: fadeInText 2s ease-in-out;
+}
+
+@keyframes fadeInText {
+  0% {
+    color: #000;
+  }
+  100% {
+    color: #fff;
+  }
+}

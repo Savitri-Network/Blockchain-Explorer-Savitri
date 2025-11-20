@@ -1,0 +1,172 @@
+// Variables for reusability
+$bg-color-light: #f8f8f8;
+$bg-color-white: #ffffff;
+$bg-color-modal-overlay: rgba(0, 0, 0, 0.5);
+$text-color-dark: #2a2831;
+$text-color-light: #ababab;
+$text-color-primary: #4173c4;
+$text-color-success: #28a745;
+$border-color-light: #d4d4d4;
+$box-shadow-modal: 0 4px 8px rgba(0, 0, 0, 0.1);
+$padding-container: 40px;
+$padding-item: 20px;
+$radius-medium: 15px;
+$radius-large: 16px;
+$font-size-title: 26px;
+$font-size-large: 20px;
+$font-size-default: 16px;
+$font-size-small: 14px;
+$gap-large: 28px;
+$gap-medium: 24px;
+$gap-small: 20px;
+$gap-xsmall: 6px;
+
+.transactionDetails {
+  display: flex;
+  flex-direction: column;
+  padding: $padding-container;
+  background-color: $bg-color-light;
+  gap: $gap-small;
+
+  .blockHeader {
+    display: flex;
+    align-items: center;
+    gap: $gap-large;
+    margin-bottom: $gap-large;
+
+    .blockNav {
+      display: flex;
+      align-items: center;
+      gap: $gap-small;
+
+      .navLink {
+        cursor: pointer;
+
+        &.rotate {
+          transform: rotate(180deg);
+        }
+      }
+
+      .currentBlock {
+        font-size: $font-size-title;
+        font-weight: 600;
+      }
+    }
+
+    .qr_code {
+      cursor: pointer;
+    }
+
+    .modalOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $bg-color-modal-overlay;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+
+      .modalContent {
+        background: $bg-color-white;
+        padding: $padding-item;
+        max-width: 400px;
+        border-radius: $radius-medium;
+        box-shadow: $box-shadow-modal;
+        position: relative;
+        text-align: center;
+
+        .closeButton {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          border: none;
+          background: none;
+          cursor: pointer;
+          font-size: 32px;
+        }
+
+        .modalTitle {
+          margin-bottom: 15px;
+          font-size: $font-size-large;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .detailsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-medium;
+    background-color: $bg-color-white;
+    padding: $padding-item;
+    border-radius: $radius-large;
+
+    .title {
+      font-weight: 600;
+      color: $text-color-dark;
+      font-size: $font-size-large;
+    }
+
+    .details_wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 160px;
+
+      .column {
+        display: flex;
+        flex-direction: column;
+
+        .detail {
+          display: flex;
+          flex-direction: column;
+          gap: $gap-xsmall;
+          margin-bottom: 10px;
+
+          .label {
+            font-size: $font-size-default;
+            font-weight: 500;
+            color: $text-color-light;
+          }
+
+          .blue {
+            color: $text-color-primary;
+          }
+
+          .value {
+            flex: 1;
+            font-weight: 400;
+            font-size: $font-size-default;
+            border-radius: 4px;
+            word-break: break-all;
+          }
+
+          .group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+          }
+        }
+      }
+    }
+  }
+
+  .statusSection {
+    display: flex;
+    align-items: center;
+
+    .status {
+      font-weight: 600;
+      color: $text-color-success;
+      margin-left: 8px;
+    }
+
+    .confirmations {
+      font-size: $font-size-small;
+      color: #666;
+    }
+  }
+}

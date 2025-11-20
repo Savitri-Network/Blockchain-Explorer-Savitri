@@ -1,0 +1,58 @@
+// Variables for reusability
+$bg-color-footer: #ffffff;
+$text-color-footer: #2a2831;
+$padding-footer: 40px 32px;
+$font-size-footer: 16px;
+$gap-small: 12px;
+$gap-medium: 1em;
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $padding-footer;
+  background-color: $bg-color-footer;
+  color: $text-color-footer;
+  font-size: $font-size-footer;
+
+  .contactInfo {
+    display: flex;
+    flex-direction: column;
+
+    p,
+    a {
+      margin: 0;
+      margin-bottom: 0.5em;
+      color: $text-color-footer;
+      text-decoration: none;
+    }
+  }
+
+  .socialIcons {
+    display: flex;
+    align-items: center;
+    gap: $gap-small;
+    a {
+      display: inline-block;
+      img {
+        display: block;
+        fill: #000;
+      }
+    }
+  }
+
+  .legalLinks {
+    a {
+      margin-left: $gap-medium;
+      color: $text-color-footer;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    .purple {
+      color: #9e3ffe;
+    }
+  }
+}

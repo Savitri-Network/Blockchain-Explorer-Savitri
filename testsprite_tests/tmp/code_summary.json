@@ -1,0 +1,193 @@
+{
+  "project_name": "Savitri Blockchain Explorer",
+  "project_type": "frontend",
+  "tech_stack": {
+    "framework": "Next.js 14.1.3",
+    "language": "TypeScript",
+    "ui_library": "React 18",
+    "styling": "SCSS (Sass)",
+    "charting": "Chart.js 4.4.2, react-chartjs-2 5.2.0",
+    "http_client": "axios 1.6.7",
+    "icons": "react-icons 5.0.1",
+    "qr_code": "qrcode.react 3.1.0",
+    "build_tool": "Next.js built-in",
+    "package_manager": "npm"
+  },
+  "architecture": {
+    "pattern": "App Router (Next.js 14)",
+    "state_management": "React Context API",
+    "routing": "Next.js App Router with dynamic routes",
+    "api_layer": "Next.js API Routes (server-side)"
+  },
+  "main_features": [
+    {
+      "name": "Blockchain Data Exploration",
+      "description": "View and explore blockchain data including blocks, transactions, accounts, and smart contracts",
+      "pages": [
+        "/",
+        "/blocks",
+        "/blocks/[id]",
+        "/transactions",
+        "/transactions/[id]",
+        "/accounts",
+        "/accounts/[id]",
+        "/contracts",
+        "/contracts/[id]"
+      ]
+    },
+    {
+      "name": "Dashboard & Statistics",
+      "description": "Interactive dashboard with statistics, charts, and real-time blockchain metrics",
+      "components": [
+        "StatsDashboard",
+        "CardDashboard",
+        "BlockBarChart",
+        "TrabsactionBarChart",
+        "ActiveUserChar"
+      ]
+    },
+    {
+      "name": "Search Functionality",
+      "description": "Global search across blocks, transactions, accounts, and smart contracts",
+      "location": "StatsDashboard component"
+    },
+    {
+      "name": "Wallet Integration",
+      "description": "Connect and interact with Ikarus wallet extension",
+      "components": [
+        "Header",
+        "WalletContext"
+      ]
+    },
+    {
+      "name": "Pagination",
+      "description": "Paginated lists for blocks, transactions, accounts, and contracts",
+      "components": [
+        "pagination",
+        "BlockList",
+        "TransactionList"
+      ]
+    },
+    {
+      "name": "Data Visualization",
+      "description": "Charts and graphs for blockchain statistics and trends",
+      "components": [
+        "BlockBarChart",
+        "TrabsactionBarChart",
+        "ActiveUserChar"
+      ]
+    },
+    {
+      "name": "Smart Contract Details",
+      "description": "View smart contract code, events, and transaction history",
+      "pages": [
+        "/contracts/[id]"
+      ],
+      "components": [
+        "ContractCode",
+        "ReadCode",
+        "WriteCode",
+        "TransactionListContracts"
+      ]
+    }
+  ],
+  "api_endpoints": {
+    "blocks": {
+      "list": "/api/blocks",
+      "detail": "/api/blocks/[id]",
+      "by_timestamp": "/api/barchart/[timestamp]"
+    },
+    "transactions": {
+      "list": "/api/transactions",
+      "detail": "/api/transactions/[id]"
+    },
+    "accounts": {
+      "list": "/api/accounts",
+      "detail": "/api/accounts/[id]"
+    },
+    "contracts": {
+      "list": "/api/contracts",
+      "detail": "/api/contracts/[id]"
+    },
+    "stats": {
+      "general": "/api/stats",
+      "user_chart": "/api/userchart"
+    }
+  },
+  "external_apis": {
+    "blockchain_api": {
+      "base_url": "https://masternode-test.ikarusway.com/data/",
+      "description": "Savitri blockchain data API"
+    }
+  },
+  "key_components": {
+    "layout": {
+      "Header": "Navigation bar with wallet connection",
+      "Footer": "Site footer with links"
+    },
+    "dashboard": {
+      "StatsDashboard": "Main statistics and search dashboard",
+      "CardDashboard": "Statistics cards",
+      "List": "Combined blocks and transactions list"
+    },
+    "charts": {
+      "BlockBarChart": "Block statistics chart",
+      "TrabsactionBarChart": "Transaction statistics chart",
+      "ActiveUserChar": "Active users chart"
+    },
+    "lists": {
+      "BlockList": "List of blocks with pagination",
+      "TransactionList": "List of transactions with pagination",
+      "TransactionListContracts": "Contract transactions list"
+    },
+    "contracts": {
+      "ContractCode": "Smart contract code display",
+      "ReadCode": "Read contract operations",
+      "WriteCode": "Write contract operations"
+    },
+    "common": {
+      "LoadingSkeleton": "Loading state component",
+      "pagination": "Pagination component"
+    }
+  },
+  "state_management": {
+    "wallet_context": {
+      "file": "context/wallet.tsx",
+      "purpose": "Manage wallet connection state and communication with Ikarus wallet extension",
+      "features": [
+        "Wallet installation detection",
+        "Public key management",
+        "PostMessage communication",
+        "Error handling"
+      ]
+    }
+  },
+  "utilities": {
+    "functions": "Utility functions for time formatting, data type detection, transaction type mapping",
+    "types": "TypeScript type definitions and transaction type mappings",
+    "validation": "Input validation for API routes",
+    "logger": "Structured logging functionality",
+    "serverEnv": "Server-side environment variable management",
+    "browserUrl": "Browser-side URL utilities"
+  },
+  "styling": {
+    "approach": "SCSS Modules",
+    "global_styles": "global.scss",
+    "component_styles": "Component-specific SCSS modules"
+  },
+  "deployment": {
+    "containerization": "Docker",
+    "port": 3000,
+    "ci_cd": "GitLab CI/CD"
+  },
+  "authentication": {
+    "type": "Wallet-based (Ikarus extension)",
+    "implementation": "PostMessage communication with browser extension"
+  },
+  "data_flow": {
+    "client_to_server": "Next.js API Routes",
+    "server_to_external": "Fetch requests to Savitri blockchain API",
+    "client_state": "React Context and useState hooks"
+  }
+}
+

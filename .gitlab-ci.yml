@@ -1,0 +1,112 @@
+image: node:18-alpine
+
+stages:
+  - install
+  - build
+  - dockerize
+  - deploy
+  
+  
+   
+ 
+variables:
+  DOCKER_IMAGE_NAME: savitri-explorer
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: ""
+  AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
+  AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+  AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+  ECR_REPOSITORY: ${ECR_REPOSITORY}
+  EC2_USER: ${EC2_USER}
+  EC2_HOST: ${EC2_HOST}
+  CONTAINER_NAME: savitri-explorer
+  AZURE_ACR_NAME: ${AZURE_ACR_NAME}
+  AZURE_ACR_LOGIN_SERVER: ${AZURE_ACR_LOGIN_SERVER}
+  AZURE_ACR_USERNAME: ${AZURE_ACR_USERNAME}
+  AZURE_ACR_PASSWORD: ${AZURE_ACR_PASSWORD}
+  OVH_REGISTRY_LOGIN: ${OVH_REGISTRY_LOGIN}
+  OVH_REGISTRY_PASSWORD: ${OVH_REGISTRY_PASSWORD}
+  OVH_REGISTRY_URL: ${OVH_REGISTRY_URL}
+  DOCKER_IMAGE_REPOSITORY: library
+ 
+
+
+
+
+
+
+
+install_dependencies:
+  stage: install
+  tags:
+    - savitri-explorer2
+    - docker
+  services:
+    - docker:dind
+  script:
+    - yarn
+  only:
+    - main
+
+build_project:
+  stage: build
+  tags:
+    - savitri-explorer2
+    - docker
+  services:
+    - docker:dind
+  script:
+    - echo "$PATH"
+    - yarn install # Install all dependencies, including 'next'
+    - yarn build # Run the build script defined in package.json
+  artifacts:
+    paths:
+      - .next/
+  only:
+    - main
+
+dockerize:
+  stage: dockerize
+  image: docker:latest
+  tags:
+    - savitri-explorer2
+    - docker
+  services:
+    - docker:dind
+  script:
+    - echo "Building Docker image..."
+    - docker build -t $DOCKER_IMAGE_NAME .
+    - docker tag $DOCKER_IMAGE_NAME $OVH_REGISTRY_URL/$DOCKER_IMAGE_NAME/$DOCKER_IMAGE_REPOSITORY:latest
+    - docker login -u $OVH_REGISTRY_LOGIN -p $OVH_REGISTRY_PASSWORD $OVH_REGISTRY_URL
+    - docker push $OVH_REGISTRY_URL/$DOCKER_IMAGE_NAME/$DOCKER_IMAGE_REPOSITORY:latest
+  only:
+    - main
+ 
+
+
+deploy:
+  stage: deploy
+  image: docker:latest
+  tags:
+    - savitri-explorer2
+    - docker
+  variables:
+    SSH_PRIVATE_KEY: $CI_DEPLOY_KEY_PRIVATE
+  environment:
+    name: production
+  before_script:
+    - apk update && apk add openssh-client # Установка SSH клиента
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan $EC2_HOST >> ~/.ssh/known_hosts
+  script:
+    - echo "Deploying to production..."
+    - ssh $EC2_USER@$EC2_HOST "docker stop $CONTAINER_NAME || true && docker rm $CONTAINER_NAME || true"
+    - ssh $EC2_USER@$EC2_HOST "docker login -u $OVH_REGISTRY_LOGIN -p $OVH_REGISTRY_PASSWORD $OVH_REGISTRY_URL"
+    - ssh $EC2_USER@$EC2_HOST "docker pull $OVH_REGISTRY_URL/$DOCKER_IMAGE_NAME/$DOCKER_IMAGE_REPOSITORY:latest"
+    - ssh $EC2_USER@$EC2_HOST "docker run -d --name $CONTAINER_NAME -p 3000:3000 $OVH_REGISTRY_URL/$DOCKER_IMAGE_NAME/$DOCKER_IMAGE_REPOSITORY:latest"
+  only:
+    - main
+

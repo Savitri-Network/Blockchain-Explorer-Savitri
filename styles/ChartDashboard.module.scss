@@ -1,0 +1,95 @@
+.container_dashboard {
+  width: 100%;
+  padding: 60px 32px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+  background-color: #f8f8f8;
+
+  .graph {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+  }
+}
+
+.cardsContainer {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(150px, 1fr));
+  grid-gap: 20px;
+  // padding: 20px;
+  margin-right: 20px;
+  background-color: #f8f8f8;
+  .card {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 8px;
+    // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: left;
+
+    .label {
+      font-size: 20px;
+      font-weight: 600;
+      color: #f6c209;
+      margin-bottom: 10px;
+      &.purple {
+        color: #ce00f0;
+      }
+      &.blue {
+        color: #4cc3fc;
+      }
+      &.orange {
+        color: #f17300;
+      }
+    }
+
+    .value {
+      font-size: 20px;
+      font-weight: bold;
+      color: #2a2831;
+      font-weight: 400;
+    }
+  }
+}
+
+// TripsCapacity.scss
+.container {
+  width: 100%;
+  background-color: var(--color-bg-white);
+  border-radius: 0.8vw;
+  padding: 1vw;
+  gap: 0.8vw;
+}
+.chartContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 10vw;
+}
+
+.colorIndicator {
+  --color: #000000;
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  background-color: var(--color);
+}
+
+.tooltip {
+  opacity: 1;
+  position: absolute;
+  font-size: 0.9vw;
+  padding: 0.5vw;
+  border-radius: 4px;
+  background-color: var(--color-bg-white);
+  max-height: 100px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  bottom: 466.304px;
+  height: fit-content;
+  transform: translateX(-50%) translateY(calc(-100% - 1vw));
+  box-shadow: rgba(0, 0, 0, 0.125) 0px 0px 0.5vw;
+}

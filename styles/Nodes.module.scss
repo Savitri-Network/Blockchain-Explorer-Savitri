@@ -1,0 +1,205 @@
+// Variables for reusability
+$bg-color-light: #f8f8f8;
+$bg-color-header: #fef4d0;
+$bg-color-white: #ffffff;
+$bg-color-chart-bar: #fcda63;
+$bg-color-status-yellow: #ffd700;
+$text-color-dark: #2a2831;
+$text-color-light: #ababab;
+$text-color-scale-line: #d4d4d4;
+$text-color-primary: #f6c209;
+$padding-container: 40px 32px;
+$padding-item: 20px;
+$radius-small: 6px;
+$radius-medium: 10px;
+$radius-large: 12px;
+$radius-xl: 20px;
+$font-size-title: 26px;
+$font-size-default: 16px;
+$font-size-large: 20px;
+$font-size-small: 14px;
+$font-size-scale: 12px;
+$gap-large: 24px;
+$gap-medium: 20px;
+$gap-small: 10px;
+$gap-xsmall: 4px;
+
+.nodeContainer {
+  background-color: $bg-color-light;
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-large;
+    padding: $padding-container;
+    background: $bg-color-header;
+
+    h1 {
+      font-size: $font-size-title;
+      font-weight: 600;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: $gap-small;
+
+      .accountItem {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        background: $bg-color-white;
+        border-radius: $radius-large;
+        padding: $padding-item;
+
+        h1 {
+          font-size: $font-size-title;
+        }
+
+        h2 {
+          font-size: $font-size-large;
+          font-weight: 600;
+          color: $text-color-primary;
+          margin-bottom: 4px;
+        }
+
+        p {
+          font-weight: 400;
+          font-size: $font-size-large;
+          color: $text-color-dark;
+        }
+      }
+    }
+  }
+
+  .chartContainer {
+    padding: $padding-container;
+    background-color: $bg-color-light;
+
+    .title {
+      display: flex;
+      flex-direction: column;
+      gap: $gap-xsmall;
+      margin-bottom: 28px;
+
+      h3 {
+        font-size: $font-size-large;
+        font-weight: 600;
+      }
+
+      p {
+        color: $text-color-light;
+        font-weight: 500;
+        font-size: $font-size-default;
+      }
+    }
+
+    .nodes {
+      padding: 60px 80px 40px 20px;
+      background-color: $bg-color-white;
+      border-radius: $radius-xl;
+      margin-bottom: 60px;
+
+      .chart {
+        position: relative;
+        margin-left: 200px;
+
+        .scaleLine {
+          position: absolute;
+          top: -20px;
+          bottom: 0;
+          width: 1px;
+          background-color: $text-color-scale-line;
+          font-size: $font-size-scale;
+          z-index: 1;
+
+          span {
+            color: $text-color-scale-line;
+            position: absolute;
+            top: -15px;
+            left: -10px;
+          }
+
+          &:after {
+            content: attr(data-value);
+            position: absolute;
+            left: 4px;
+            top: -20px;
+          }
+        }
+
+        .barContainer {
+          display: flex;
+          align-items: center;
+          margin-bottom: 5px;
+          z-index: 5;
+
+          .countryName {
+            width: 150px;
+            position: absolute;
+            left: -180px;
+            text-align: right;
+            word-wrap: none;
+          }
+
+          .bar {
+            height: 20px;
+            background-color: $bg-color-chart-bar;
+            color: $text-color-dark;
+            display: flex;
+            align-items: center;
+            padding-left: 5px;
+            z-index: 2;
+          }
+
+          .value {
+            padding-left: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  .mapContainer {
+    position: relative;
+
+    .statusContainer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: 12px;
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      background-color: $bg-color-light;
+      border-radius: $radius-small;
+
+      .statusItem {
+        display: flex;
+        align-items: center;
+        margin-right: 20px; // Adjust spacing as needed
+
+        .statusDot {
+          height: 10px;
+          width: 10px;
+          border-radius: 50%;
+          margin-right: 5px;
+          display: inline-block;
+        }
+
+        .statusLabel {
+          font-size: $font-size-small;
+        }
+
+        .yellow {
+          background-color: $bg-color-status-yellow;
+        }
+
+        .black {
+          background-color: #000000;
+        }
+      }
+    }
+  }
+}

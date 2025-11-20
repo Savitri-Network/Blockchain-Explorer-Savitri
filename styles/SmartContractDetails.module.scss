@@ -1,0 +1,307 @@
+// Variables for reusability
+$bg-color-light: #f8f8f8;
+$bg-color-white: #ffffff;
+$bg-color-tab-hover: rgb(209, 174, 247);
+$bg-color-tab-active: rgb(241, 228, 255);
+$text-color-dark: #2a2831;
+$text-color-light: #ababab;
+$text-color-placeholder: #cccccc;
+$text-color-primary: #f6c209;
+$border-color-light: #d4d4d4;
+$padding-container: 40px 32px;
+$padding-item: 20px;
+$radius-small: 8px;
+$radius-medium: 10px;
+$radius-large: 12px;
+$radius-xl: 16px;
+$font-size-title: 20px;
+$font-size-default: 16px;
+$gap-large: 32px;
+$gap-medium: 20px;
+$gap-small: 10px;
+$gap-xsmall: 6px;
+
+.containerDetails {
+  padding: $padding-container;
+  background-color: $bg-color-light;
+}
+
+.containerWrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $gap-large;
+  margin-bottom: 60px;
+
+  .overview,
+  .events {
+    background: $bg-color-white;
+    padding: $padding-item;
+    border-radius: $radius-small;
+  }
+
+  .overview {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-medium;
+
+    h1 {
+      font-weight: 600;
+      font-size: $font-size-title;
+      margin-bottom: 4px;
+    }
+
+    .wrap {
+      display: flex;
+      flex-direction: column;
+      gap: $gap-xsmall;
+
+      .label {
+        color: $text-color-light;
+        font-weight: 500;
+        font-size: $font-size-default;
+      }
+
+      .value {
+        color: $text-color-dark;
+        font-weight: 400;
+        font-size: $font-size-default;
+      }
+    }
+  }
+
+  .events {
+    h2 {
+      font-size: $font-size-title;
+      font-weight: 600;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 $gap-small;
+
+      th {
+        color: $text-color-light;
+        font-weight: 500;
+        font-size: $font-size-default;
+        text-align: left;
+      }
+
+      td {
+        font-size: $font-size-default;
+        font-weight: 400;
+        color: $text-color-dark;
+      }
+    }
+  }
+}
+
+.tabContainer {
+  display: flex;
+  align-items: center;
+  background-color: $bg-color-light;
+  padding: $gap-small;
+  margin-bottom: $gap-medium;
+
+  .tab {
+    background: none;
+    border: none;
+    padding: $gap-small $gap-medium;
+    border-radius: $radius-large;
+    cursor: pointer;
+    font-size: $font-size-default;
+    color: #9e3ffe;
+    &:hover {
+      background-color: $bg-color-tab-hover;
+    }
+
+    &.active {
+      background-color: $bg-color-tab-active;
+    }
+  }
+
+  .searchBar {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    background-color: $bg-color-white;
+    padding: $gap-small;
+    border: 1px solid $border-color-light;
+    border-radius: $radius-medium;
+
+    .icon {
+      color: $text-color-placeholder;
+      margin-right: 0.5rem;
+    }
+
+    .input {
+      width: 100%;
+      flex-grow: 1;
+      border: none;
+      background-color: transparent;
+      font-size: $font-size-default;
+      font-weight: 500;
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        font-weight: 400;
+        color: $text-color-placeholder;
+      }
+    }
+  }
+}
+
+.bottomContainer {
+  border-radius: $radius-xl;
+
+  .tabContainer2 {
+    padding: $padding-item;
+    border-radius: $radius-xl;
+    display: flex;
+    flex-direction: column;
+    background-color: $bg-color-white;
+
+    .tabs {
+      display: flex;
+
+      .tab {
+        padding: $gap-small $gap-medium;
+        cursor: pointer;
+        border: none;
+        background: none;
+        border-radius: $radius-large;
+
+        &.activeTab {
+          background-color: $bg-color-tab-active;
+        }
+
+        &:hover {
+          background-color: $bg-color-tab-hover;
+        }
+      }
+    }
+
+    .content {
+      padding: $padding-item;
+
+      .codeContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+
+        .header {
+          .verify {
+            display: flex;
+            gap: $gap-xsmall;
+            margin-bottom: $gap-medium;
+
+            p,
+            span {
+              font-weight: 400;
+              font-size: $font-size-default;
+            }
+
+            span {
+              color: $text-color-light;
+            }
+          }
+
+          .box {
+            display: flex;
+            flex-direction: column;
+
+            .wrap {
+              display: grid;
+              grid-template-columns: 0.2fr 1fr;
+              row-gap: 8px;
+
+              .label {
+                color: $text-color-light;
+                font-weight: 400;
+                font-size: $font-size-default;
+              }
+
+              .value {
+                color: $text-color-dark;
+                font-weight: 400;
+                font-size: $font-size-default;
+              }
+            }
+          }
+        }
+
+        .content {
+          border-radius: $radius-xl;
+          background-color: $bg-color-light;
+
+          .label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            p {
+              color: $text-color-light;
+              font-weight: 400;
+              font-size: $font-size-default;
+            }
+
+            .right {
+              display: flex;
+              gap: $gap-medium;
+            }
+          }
+
+          pre {
+            white-space: pre-wrap; // Ensures that text wraps in the container
+            word-wrap: break-word;
+          }
+        }
+      }
+
+      .readCodeContainer {
+        display: flex;
+        flex-direction: column;
+        gap: $gap-large;
+
+        .header {
+          display: flex;
+          gap: $gap-large;
+
+          p {
+            color: $text-color-primary;
+            font-size: $font-size-default;
+            font-weight: 400;
+          }
+        }
+
+        .readContent {
+          display: flex;
+          flex-direction: column;
+          gap: $gap-medium;
+
+          .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: $bg-color-light;
+            border-radius: $radius-medium;
+            padding: 12px $padding-item;
+
+            .label {
+              font-size: $font-size-default;
+              font-weight: 400;
+            }
+
+            .right {
+              display: flex;
+              gap: $gap-medium;
+            }
+          }
+        }
+      }
+    }
+  }
+}

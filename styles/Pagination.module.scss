@@ -1,0 +1,48 @@
+// Variables for reusability
+$text-color-default: #000;
+$bg-color-white: #ffffff;
+$text-color-disabled: #ababab;
+$bg-color-transparent: transparent;
+$margin-small: 5px;
+$padding-container: 32px;
+$padding-block: 20px;
+$padding-item: 10px;
+$radius: 10px;
+$font-size-title: 26px;
+$font-size-default: 16px;
+$font-size-small: 14px;
+$gap-large: 32px;
+$gap-medium: 20px;
+$gap-small: 12px;
+
+.bottom {
+  display: flex;
+  padding: $padding-block;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $bg-color-white;
+  font-size: $font-size-default;
+  border-bottom-left-radius: $radius;
+  border-bottom-right-radius: $radius;
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    .pageButton {
+      margin: 0 $margin-small;
+      cursor: pointer;
+      background-color: $bg-color-transparent;
+  
+      &:disabled {
+        cursor: default;
+        color: $text-color-disabled;
+      }
+  
+      &.active {
+        color: $text-color-default;
+      }
+    }
+  }
+}

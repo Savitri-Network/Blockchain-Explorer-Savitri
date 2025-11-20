@@ -1,0 +1,497 @@
+[
+  {
+    "id": "TC001",
+    "title": "Homepage Stats Dashboard Load",
+    "description": "Verify that the homepage loads the Stats Dashboard showing global blockchain metrics and search bar successfully with accurate real-time data.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the homepage"
+      },
+      {
+        "type": "assertion",
+        "description": "Check that StatsDashboard component is rendered"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify real-time network metrics such as TPS, active users, blocks, and transaction volumes are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify global search bar is present and responsive"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify loading skeleton is shown during data fetch"
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "title": "Global Search Functionality Valid Query",
+    "description": "Verify global search returns correct filtered results for blocks, transactions, accounts, and contracts given valid queries.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to homepage"
+      },
+      {
+        "type": "action",
+        "description": "Enter a valid block ID in the global search bar and submit"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify blocks list filtered and relevant block(s) displayed"
+      },
+      {
+        "type": "action",
+        "description": "Enter a valid transaction hash and submit"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify transactions list filtered and relevant transaction(s) shown"
+      },
+      {
+        "type": "action",
+        "description": "Enter a valid account address and submit"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify accounts list filtered and relevant account(s) displayed"
+      },
+      {
+        "type": "action",
+        "description": "Enter a valid smart contract ID and submit"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify contracts list filtered and relevant contract(s) displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "title": "Global Search Functionality Invalid Query",
+    "description": "Verify global search handles invalid or empty queries gracefully and returns appropriate messages.",
+    "category": "error handling",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to homepage"
+      },
+      {
+        "type": "action",
+        "description": "Enter an invalid query string with unsupported characters and submit"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify appropriate error or no results message is shown without UI breakage"
+      },
+      {
+        "type": "action",
+        "description": "Enter an empty string and submit"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify system prompts user to enter a query or shows no results"
+      }
+    ]
+  },
+  {
+    "id": "TC004",
+    "title": "Blocks List Pagination and Filtering",
+    "description": "Verify blocks list page fetches paginated data, applies client-side filtering and sorting correctly, and handles edge cases.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /blocks page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify paginated list of blocks is displayed with default page"
+      },
+      {
+        "type": "action",
+        "description": "Click pagination next page and verify new set of blocks are displayed"
+      },
+      {
+        "type": "action",
+        "description": "Apply filter criteria (e.g., block height range) and verify filtered blocks"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify filtering updates block list without inconsistencies"
+      },
+      {
+        "type": "action",
+        "description": "Test case with no matching blocks for a filter and verify empty state is shown gracefully"
+      }
+    ]
+  },
+  {
+    "id": "TC005",
+    "title": "Block Detail View and Metadata Verification",
+    "description": "Verify block detail pages show full metadata, transaction/event lists, QR code generation, and related links correctly.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to a valid block detail page /blocks/[id]"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify display of complete block metadata (height, timestamp, transactions, etc.)"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify transaction list within block is shown with pagination if needed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify QR code representing block ID is rendered correctly"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify related links (e.g., previous/next blocks) are functional"
+      }
+    ]
+  },
+  {
+    "id": "TC006",
+    "title": "Transaction Detail View and Validation",
+    "description": "Verify transaction detail page displays all metadata, transaction types, raw JSON data, and related details accurately.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to a valid transaction detail page /transactions/[id]"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify transaction metadata and type are displayed clearly"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify raw JSON data of transaction is available for developer analysis"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify related blockchain links (block and involved accounts) are displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC007",
+    "title": "Smart Contract Explorer Read/Write Operations",
+    "description": "Verify smart contract explorer page shows contract code, event history, and supports read/write interaction with correct validations and secure communication.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to a valid smart contract detail page /contracts/[id]"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify smart contract code is displayed in readable format"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify list of contract-related events and transactions is shown"
+      },
+      {
+        "type": "action",
+        "description": "Perform read operations on allowed contract functions"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify read results are correct and consistent"
+      },
+      {
+        "type": "action",
+        "description": "Perform write operations with valid inputs"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify write transaction is sent correctly and error handled if any issues"
+      },
+      {
+        "type": "action",
+        "description": "Attempt write operation with invalid inputs"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify robust input validation blocks invalid requests and shows meaningful error messages"
+      }
+    ]
+  },
+  {
+    "id": "TC008",
+    "title": "Wallet Integration Connection Management",
+    "description": "Verify wallet connection lifecycle with Ikarus wallet extension including detection, connection, disconnection, state management, and error handling.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Load app with Ikarus wallet extension installed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify wallet installation is detected and user prompted to connect"
+      },
+      {
+        "type": "action",
+        "description": "Connect to the wallet using UI button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify public key is retrieved and connection state is updated"
+      },
+      {
+        "type": "action",
+        "description": "Send a valid PostMessage request to wallet and verify message handling"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify wallet responds and errors are logged if any"
+      },
+      {
+        "type": "action",
+        "description": "Disconnect wallet"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify connection state resets and UI updates accordingly"
+      },
+      {
+        "type": "action",
+        "description": "Load app without wallet extension installed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify user is informed wallet extension is missing"
+      }
+    ]
+  },
+  {
+    "id": "TC009",
+    "title": "API Routes Input Validation and Error Handling",
+    "description": "Verify that all Next.js API routes validate input parameters strictly, return appropriate HTTP status codes and error messages for invalid inputs.",
+    "category": "error handling",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Make API request to /api/blocks with valid pagination parameters"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify HTTP 200 response with valid paginated data"
+      },
+      {
+        "type": "action",
+        "description": "Make API request to /api/blocks with invalid pagination parameters (e.g., negative page)"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify HTTP 400 response with descriptive validation error message"
+      },
+      {
+        "type": "action",
+        "description": "Make API request to /api/transactions/[id] with a non-existent ID"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify HTTP 404 response indicating resource not found"
+      },
+      {
+        "type": "action",
+        "description": "Make API request with unsupported HTTP method"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify HTTP 405 Method Not Allowed response"
+      }
+    ]
+  },
+  {
+    "id": "TC010",
+    "title": "Structured Logging on Errors and Wallet Interaction",
+    "description": "Verify structured logging captures relevant error, warning, and event data from wallet communication and application API layers.",
+    "category": "security",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Trigger an API route error by sending invalid input"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify logs contain structured and detailed error information including timestamp and request context"
+      },
+      {
+        "type": "action",
+        "description": "Cause wallet communication error (e.g., send invalid PostMessage)"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify wallet interaction error is logged with details"
+      },
+      {
+        "type": "action",
+        "description": "Review logs for successful events to verify structured logging format"
+      }
+    ]
+  },
+  {
+    "id": "TC011",
+    "title": "UI Loading States and Error Display",
+    "description": "Verify UI components display loading skeletons during data fetch and show consistent, user-friendly error messages on failure.",
+    "category": "ui",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to heavy data pages (e.g., blocks list) with slow network simulation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify loading skeleton is shown while data loads"
+      },
+      {
+        "type": "action",
+        "description": "Simulate API failure and navigate to affected page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify error message is displayed gracefully without UI breakage"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify date/time formats use relative time strings consistently"
+      }
+    ]
+  },
+  {
+    "id": "TC012",
+    "title": "Performance Benchmark Verification",
+    "description": "Verify page load times are under 2 seconds, API responses under 500ms, and chart components render within 1 second under normal network conditions.",
+    "category": "performance",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Measure time to fully load homepage"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify page load time is less than 2 seconds"
+      },
+      {
+        "type": "action",
+        "description": "Make API calls to fetch blocks and transactions lists"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify API response times are under 500ms"
+      },
+      {
+        "type": "action",
+        "description": "Render charts on dashboard"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify chart components render fully within 1 second"
+      }
+    ]
+  },
+  {
+    "id": "TC013",
+    "title": "Security Headers and Input Sanitization",
+    "description": "Verify security HTTP headers are enforced and all user inputs are sanitized to prevent XSS, clickjacking, MIME sniffing vulnerabilities.",
+    "category": "security",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Inspect HTTP response headers for security policies (Content-Security-Policy, X-Frame-Options, X-Content-Type-Options)"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify security headers are present and correctly configured"
+      },
+      {
+        "type": "action",
+        "description": "Input malicious script tags and SQL-like payloads into search and form inputs"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify inputs are sanitized and application resists injection/XSS attacks"
+      }
+    ]
+  },
+  {
+    "id": "TC014",
+    "title": "Pagination and Filtering Edge Cases",
+    "description": "Verify pagination and filtering components handle edge conditions such as empty results, very large datasets, and invalid page numbers correctly.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Apply filters that result in zero matching records"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify empty state message and no UI errors occur"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to page numbers beyond last page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify system gracefully handles out-of-range pages by redirecting or showing no results message"
+      },
+      {
+        "type": "action",
+        "description": "Test with extremely large data sets for sorting and pagination"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify data consistency and no performance degradation or crashes"
+      }
+    ]
+  },
+  {
+    "id": "TC015",
+    "title": "Placeholder Pages Accessibility and Content",
+    "description": "Verify placeholder pages for Developers, Knowledge, and Nodes display 'Coming Soon' message and do not break app layout.",
+    "category": "ui",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to placeholder routes such as /developers, /knowledge, /nodes"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify 'Coming Soon' text is displayed clearly"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no broken UI elements or JavaScript errors occur"
+      }
+    ]
+  }
+]
